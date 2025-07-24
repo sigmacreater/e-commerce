@@ -1,4 +1,5 @@
 import { Book, ChartBar, ChevronLeft, ChevronRight, LayoutDashboard, ListOrdered, Users } from 'lucide-react'
+import Link from 'next/link'
 import React, { useState } from 'react'
 
 const Sidebar = () => {
@@ -41,14 +42,14 @@ const Sidebar = () => {
         <h1 className={`text-white font-bold  flex  justify-center mb-5  ${side ?"text-2xl":"text-lg mt-1"}`}>{ side ? "World ":"World"}</h1>
       <div  className='flex flex-col   gap-5 text-white p-3'>
         {links.map((v,i)=>(
-            <div key={i} className={`border border-white flex  rounded-lg p-2 gap-2 ${side ?" ":" pl-3 "}`}>
+            <Link href={v.link} key={i} className={`border border-white flex  rounded-lg p-2 gap-2 ${side ?" ":" pl-3 "}`}>
                 <div>
                 {v.icon}
                 </div>
                 <p className={` origin-left transition-all duration-300 ${side ?"opacity-100 scale-100":"opacity-0 scale-0 "}`}>
                 {v.lable}
                 </p>
-            </div>
+            </Link>
         ))}
       </div>
       <button onClick={toggle} className='border border-white text-white absolute bottom-2 right-0 p-1'>{side ? <ChevronLeft/> :<ChevronRight/>}</button>
